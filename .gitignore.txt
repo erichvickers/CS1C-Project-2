@@ -1,0 +1,4 @@
+*.pro.user*
+moc_*
+Debug\*
+*.o
