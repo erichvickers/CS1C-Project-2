@@ -1,6 +1,7 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+
 #include <iostream>
 #include <iterator>
 
@@ -218,6 +219,7 @@ T* vector<T>::insert(iterator p, const T& v)
 
     }
 }
+
 
 
 
