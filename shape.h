@@ -4,16 +4,19 @@
 #include <vector>
 #include <QBrush>
 #include <QPen>
+#include <QWidget>
 #include <QPainter>
 
-enum ShapeType {Line, Polyline,Polygon, Rectangle, Ellipse, Text};
-enum Color {Red, Orange, Yellow, Green, Blue, Purple, White, Black};
-enum PenStyle {Pen_Solid, Dash, Dot, Pen_None};
-enum PenCapStyle {Flat, Square, Cap_Round};
-enum PenJoinStyle {Miter, Bevel, Join_Round};
-enum BrushStyle {LinearGradient, RadialGradient, ConicalGradient, Texture,
-                 Brush_Solid, Horizontal, Vertical, Cross, BackwardDiagonal, ForwardDiagonal, Brush_None};
 
+//enum ShapeType {Line, Polyline,Polygon, Rectangle, Ellipse, Text};
+// this causes errors because it's included somewhere within <QtGui>. commenting it until we figure out how we want to do it
+int ShapeCount = 0;
+int LineCount = 0;
+int PolylineCount = 0;
+int PolygonCount = 0;
+int RectangleCount = 0;
+int EllipseCount = 0;
+int TextCount = 0;
 
 class Shape : public QPainter
 {
@@ -24,25 +27,17 @@ public:
     virtual void getPerimeter() = 0;
     virtual void getArea() = 0;
 
+    void setShapeID(int s);
+    int getShapeID();
+
 protected:
-    ShapeType s;  // this will be set in each derived class
 
-    double *dimensions = new double[10]; // array of dimensions. starts with the top dimension and goes clockwise
-    // e.g. a rectangle with top/bottom sides at 5 units and the left and right sides of 2 units would be an array
-    // of: {5,2,5,2}. Set up this way to be more robust for the polygon case (imagine the array for an octagon).
-    // ellipses and lines would just be the circumference or line length, respectively.
+    QPainter p();
+    QPen pen;
+    QBrush brush;
+    QColor color;
 
-//    QPen pen;
-//    QColor color;
-    // not sure if we're allowed to use these two because they do have everything. kinda defeats the purpose. unsure about some of the types
-    // for variables like brush type but we'll figure it out.
 
-    Color penColor;
-    double penWidth;
-    PenStyle penStyle;
-    PenCapStyle penCapStyle;
-    Color brushColor;
-    BrushStyle brushStyle;
 
     int shapeID;
 
