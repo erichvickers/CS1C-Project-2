@@ -1,22 +1,56 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
 
-#include <QMainWindow>
 
-namespace Ui {
-class MainWindow;
+
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
 }
 
-class MainWindow : public QMainWindow
+MainWindow::~MainWindow()
 {
-    Q_OBJECT
+    delete ui;
+}
 
-public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
 
-private:
-    Ui::MainWindow *ui;
-};
+void MainWindow::paintEvent(QPaintEvent *event)
+{
+    QPainter p(this);
 
-#endif // MAINWINDOW_H
+    QPen pointPen(Qt::black);
+    pointPen.setWidth(5);
+
+    QPen linePen(Qt::green);
+    linePen.setWidth(2);
+
+    QPoint p1;
+    p1.setX(10);
+    p1.setY(15);
+
+    QPoint p2;
+    p2.setX(100);
+    p2.setY(100);
+
+    p.setPen(linePen);
+    p.drawLine(p1, p2);
+
+    p.setPen(pointPen);
+    p.drawRect(10, 120, 60, 20);
+    p.fillRect(10, 120, 60, 20, Qt::yellow);
+
+    p.drawPoint(p1);
+    p.drawPoint(p2);
+
+    linePen.setColor(Qt::blue);
+    p.setPen(linePen);
+    p1.setX(180);
+    p1.setY(70);
+    p.drawEllipse(p1, 20, 30);
+
+    linePen.setStyle(Qt::DotLine);
+    p.drawRect(230,230,100,30);
+    p.drawText(250,250, "Text Box Example");
+}
