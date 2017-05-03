@@ -2,8 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QBrush>
+#include <QPen>
+#include <QWidget>
+#include <QPainter>
 #include "shape.h"
-
 
 namespace Ui {
 class MainWindow;
