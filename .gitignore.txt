@@ -1,4 +1,5 @@
 *.pro.user*
 moc_*
-Debug\*
+debug\*
 *.o
+Makefile*

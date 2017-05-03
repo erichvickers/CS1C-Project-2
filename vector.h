@@ -213,7 +213,7 @@ T* vector<T>::insert(iterator p, const T& v)
 
     T a = *p;
 
-    for (vector<T>::iterator = p; vector<T>::iterator!=end();vector<T>::iterator++)
+    for (vector<T>::iterator i = p; i!=end();i++)
     {
 
     }
