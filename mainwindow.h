@@ -6,6 +6,7 @@
 #include <QPen>
 #include <QWidget>
 #include <QPainter>
+#include <QPaintDevice>
 #include "Shape.h"
 
 namespace Ui {

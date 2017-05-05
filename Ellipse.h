@@ -13,7 +13,7 @@ private:
  public:
       Ellipse(int x1, int y1, int a, int b);
       virtual draw();
-      void move();
+      virtual void move();
       virtual void getPerimeter();
       virtual void getArea();
 };

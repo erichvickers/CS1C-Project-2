@@ -14,7 +14,7 @@ private:
 public:
     Text(int x1, int y1, int l, int w);
     virtual void draw();
-    void move();
+    virtual void move();
     virtual void getPerimeter();
     virtual void getArea();
 };

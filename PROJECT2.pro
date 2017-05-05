@@ -14,20 +14,20 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    Line.cpp \
-    Polyline.cpp \
-    Shape.cpp
+    shape.cpp \
+    rectangle.cpp \
+    Line.cpp
 
 HEADERS  += mainwindow.h \
     vector.h \
     square.h \
     circle.h \
     Ellipse.h \
-    Shape.h \
     Line.h \
     Polygon.h \
     Polyline.h \
     Rectangle.h \
+    Shape.h \
     Text.h
 
 FORMS    += mainwindow.ui

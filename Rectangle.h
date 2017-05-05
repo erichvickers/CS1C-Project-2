@@ -12,8 +12,8 @@ private:
 public:
      Rectangle(int x1, int y1, int l, int w);
      virtual void draw();
-     void move();
-     virtual void getPerimeter();
-     virtual void getArea();
+     virtual void move();
+     virtual double getPerimeter();
+     virtual double getArea();
 };
 #endif // RECTANGLE_H

@@ -1,0 +1,25 @@
+#include "Shape.h"
+int Shape::ShapeCount;
+int Shape::LineCount;
+int Shape::PolylineCount;
+int Shape::PolygonCount;
+int Shape::RectangleCount;
+int Shape::EllipseCount;
+int Shape::TextCount;
+
+Shape::Shape()
+{
+
+}
+
+void Shape::setShapeID(int s)
+{
+    shapeID = s;
+}
+
+int Shape::getShapeID()
+{
+    return shapeID;
+}
+
+

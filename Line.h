@@ -8,11 +8,11 @@ private:
      QPoint p1;
      QPoint p2;
  public:
-      Line(int x1, int x2, int y1, int y2);
-      void draw() override;
-      void move(int,int,int,int);
-      double getPerimeter() override;
-      double getArea() override;
+      line(int x1, int x2, int y1, int y2);
+      virtual void draw();
+      virtual void move();
+      virtual double getPerimeter();
+      virtual double getArea();
 };
 #endif // LINE_H
 
