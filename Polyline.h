@@ -1,19 +1,17 @@
 #ifndef POLYLINE_H
 #define POLYLINE_H
-#include "shape.h"
+#include "Shape.h"
+#include "vector.h"
 
-class polyline : public Shape
+class Polyline : public Shape
 {
-    QPoint p1;
-    QPoint p2;
-    QPoint p3;
-    QPoint p4;
+    vector<QPoint> points;
 
 public:
-     polyline(int x1, int y2, int x2, int y2, int x3, int y3, int x4, int y4);
-     virtual void draw();
-     virtual void move();
-  virtual void getPerimeter();
-     virtual void getArea();
+     Polyline(QPoint *points, int amount);
+     void draw() override;
+     void move();
+     double getPerimeter() override;
+     double getArea() override;
 };
 #endif // POLYLINE_H

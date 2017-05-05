@@ -1,7 +1,7 @@
 #ifndef ELLIPSE_H
 #define ELLIPSE_H
 
-#include "shape.h"
+#include "Shape.h"
 
 class Ellipse : public Shape
 {
@@ -13,7 +13,7 @@ private:
  public:
       Ellipse(int x1, int y1, int a, int b);
       virtual draw();
-      virtual void move();
+      void move();
       virtual void getPerimeter();
       virtual void getArea();
 };

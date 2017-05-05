@@ -1,8 +1,8 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
-#include "shape.h"
+#include "Shape.h"
 
-class rectangle : public Shape
+class Rectangle : public Shape
 {
 private:
     QPoint p1;
@@ -10,9 +10,9 @@ private:
     int w;
 
 public:
-     polyline(int x1, int y1, int l, int w);
+     Rectangle(int x1, int y1, int l, int w);
      virtual void draw();
-     virtual void move();
+     void move();
      virtual void getPerimeter();
      virtual void getArea();
 };

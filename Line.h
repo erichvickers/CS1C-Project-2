@@ -1,18 +1,18 @@
 #ifndef LINE_H
 #define LINE_H
-#include "shape.h"
+#include "Shape.h"
 
-class line : public Shape
+class Line : public Shape
 {
 private:
      QPoint p1;
      QPoint p2;
  public:
-      line(int x1, int x2, int y1, int y2);
-      virtual void draw();
-      virtual void move();
-      virtual void getPerimeter();
-      virtual void getArea();
+      Line(int x1, int x2, int y1, int y2);
+      void draw() override;
+      void move(int,int,int,int);
+      double getPerimeter() override;
+      double getArea() override;
 };
 #endif // LINE_H
 

@@ -6,7 +6,7 @@
 #include <QPen>
 #include <QWidget>
 #include <QPainter>
-#include "shape.h"
+#include "Shape.h"
 
 namespace Ui {
 class MainWindow;
