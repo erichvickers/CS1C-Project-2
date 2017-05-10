@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -13,7 +14,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void Read()
+void MainWindow::Read()
 {
 QFile file("shapeText.txt");
     if (!file.open(QFile::ReadOnly | QFile::Text))
@@ -22,8 +23,6 @@ QFile file("shapeText.txt");
     QTextStream in(&file);
     while (!in.atEnd())
     {
-        while(int i == 6)
-        {
         QString line = in.readLine();
         QStringList list;
         list = line.split(": ");
@@ -47,23 +46,44 @@ QFile file("shapeText.txt");
         QString capStyle = list[1];
         list = in.readLine().split(": ");
         QString joinStyle = list[1];
-        i++;
-        }
-
-
-        qDebug() << num1<< endl << num2 << endl << num3<< endl << type<<endl << color<<endl << style<<endl << capStyle<<endl << joinStyle<<endl;
-
     }
 }
-bool comparator(shape & a, shape & b)
-{
-    return a.getArea() > b.getArea();
-}
 
-void sortFunction(vector list)
+void MainWindow::paintEvent(QPaintEvent *event)
 {
-     sort(list.begin(), list.end(), comparator());
+    QPainter p(this);
 
-     for (vector<int>::iterator it=myvector.begin(); it!=myvector.end(); ++it)
-     cout << ' ' << *it;
+    QPen pointPen(Qt::black);
+    pointPen.setWidth(5);
+
+    QPen linePen(Qt::green);
+    linePen.setWidth(2);
+
+    QPoint p1;
+    p1.setX(10);
+    p1.setY(15);
+
+    QPoint p2;
+    p2.setX(100);
+    p2.setY(100);
+
+    p.setPen(linePen);
+    p.drawLine(p1, p2);
+
+    p.setPen(pointPen);
+    p.drawRect(10, 120, 60, 20);
+    p.fillRect(10, 120, 60, 20, Qt::yellow);
+
+    p.drawPoint(p1);
+    p.drawPoint(p2);
+
+    linePen.setColor(Qt::blue);
+    p.setPen(linePen);
+    p1.setX(180);
+    p1.setY(70);
+    p.drawEllipse(p1, 20, 30);
+
+    linePen.setStyle(Qt::DotLine);
+    p.drawRect(230,230,100,30);
+    p.drawText(250,250, "Text Box Example");
 }

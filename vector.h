@@ -4,8 +4,6 @@
 #include <iostream>
 #include <iterator>
 
-
-
 template<class T>
 class vector
 {
@@ -34,10 +32,10 @@ public:
     const_iterator end() const;
     iterator insert(iterator p, const T& v);// insert a new element v before p
     iterator erase(iterator p);		  // remove element pointed to by p
+    void sortFunction(vector<T> list);
+    bool comparator(T& a, T& b);
     ~vector() {delete [] elem;}						// destructor
 };
-
-#include "vector.h"
 
 /* COPY CONSTRUCTOR
  *
@@ -213,12 +211,27 @@ T* vector<T>::insert(iterator p, const T& v)
 
     T a = *p;
 
-    for (vector<T>::iterator = p; vector<T>::iterator!=end();vector<T>::iterator++)
+    for (vector<T>::iterator i = p; i!=end();i++)
     {
 
     }
 }
 
+template <class T>
+void vector<T>::sortFunction(vector<T> list)
+{
+     sort(list.begin(), list.end(), comparator());
 
+//     for (vector<int>::iterator it=list.begin(); it!=list.end(); ++it){
+
+//     }
+//     std::cout << ' ' << *it;
+}
+
+template <class T>
+bool vector<T>::comparator(T & a, T & b)
+{
+    return a > b;
+}
 
 #endif // VECTOR_H
