@@ -14,6 +14,40 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::Read()
+{
+QFile file("shapeText.txt");
+    if (!file.open(QFile::ReadOnly | QFile::Text))
+        return;
+
+    QTextStream in(&file);
+    while (!in.atEnd())
+    {
+        QString line = in.readLine();
+        QStringList list;
+        list = line.split(": ");
+        int num1 = list[1].toInt();
+        list = in.readLine().split(": ");
+        QString type = list[1];
+        list = in.readLine().split(": ");
+        list = list[1].split(", ");
+        QList<int> num2;
+        for(int i =0; i < list.size(); i++)
+        {
+            num2.append(list[i].toInt());
+        }
+        list = in.readLine().split(": ");
+        QString color = list[1];
+        list = in.readLine().split(": ");
+        int num3 = list[1].toInt();
+        list = in.readLine().split(": ");
+        QString style = list[1];
+        list = in.readLine().split(": ");
+        QString capStyle = list[1];
+        list = in.readLine().split(": ");
+        QString joinStyle = list[1];
+    }
+}
 
 void MainWindow::paintEvent(QPaintEvent *event)
 {

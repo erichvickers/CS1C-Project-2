@@ -32,6 +32,8 @@ public:
     void setBrushColor(QColor &color);
     void setBrushStyle(Qt::BrushStyle);
 
+    // TODO: Override '>' operator (compare areas)
+
     virtual void draw() = 0;
     virtual double getPerimeter() = 0;
     virtual double getArea() = 0;

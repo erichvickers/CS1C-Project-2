@@ -3,3 +3,5 @@ moc_*
 debug\*
 *.o
 Makefile*
+.qmake*
+ui_*
