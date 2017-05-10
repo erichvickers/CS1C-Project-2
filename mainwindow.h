@@ -2,6 +2,16 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <fstream>
+#include <algorithm>
+#include <QBrush>
+#include <QPen>
+#include <QWidget>
+#include <QPainter>
+#include <QFile>
+#include <QTextStream>
+#include "Shape.h"
+#include "vector.h"
 
 namespace Ui {
 class MainWindow;
@@ -14,6 +24,13 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+    void Read();
+
+protected:
+    void paintEvent(QPaintEvent *event);
+
+
 
 private:
     Ui::MainWindow *ui;

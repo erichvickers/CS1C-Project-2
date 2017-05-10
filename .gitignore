@@ -1,0 +1,7 @@
+*.pro.user*
+moc_*
+debug\*
+*.o
+Makefile*
+.qmake*
+ui_*
