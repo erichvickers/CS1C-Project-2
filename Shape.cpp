@@ -1,4 +1,12 @@
 #include "Shape.h"
+int Shape::ShapeCount = 0;
+int Shape::LineCount = 0;
+int Shape::PolylineCount = 0;
+int Shape::PolygonCount = 0;
+int Shape::RectangleCount = 0;
+int Shape::EllipseCount = 0;
+int Shape::TextCount = 0;
+
 
 Shape::Shape()
 {

@@ -5,12 +5,14 @@
 
 class Polyline : public Shape
 {
+private:
     vector<QPoint> points;
+    int amount;
 
 public:
-     Polyline(QPoint *points, int amount);
+     Polyline(QPoint *points_in, int amount_in);
      void draw() override;
-     void move();
+     void move(QPoint newPoint);
      double getPerimeter() override;
      double getArea() override;
 };

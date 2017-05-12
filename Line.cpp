@@ -16,6 +16,8 @@ private:
 */
 Line::Line(int x1, int y1, int x2, int y2)
 {
+    shapeID = LineCount++;
+    shapeID = shapeID + 1000;
     p1.setX(x1);
     p1.setY(y1);
     p2.setX(x2);

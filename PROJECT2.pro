@@ -16,7 +16,8 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     Line.cpp \
     Polyline.cpp \
-    Shape.cpp
+    Shape.cpp \
+    polygon.cpp
 
 HEADERS  += mainwindow.h \
     vector.h \

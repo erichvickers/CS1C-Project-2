@@ -35,6 +35,16 @@ public:
     void sortFunction(vector<T> list);
     bool comparator(T& a, T& b);
     ~vector() {delete [] elem;}						// destructor
+
+
+
+    class bounds
+    {
+        bounds()
+        {
+
+        }
+    };
 };
 
 /* COPY CONSTRUCTOR
@@ -122,14 +132,7 @@ const T& vector<T>::operator[](int n) const
 template<class T>
 T& vector<T>::operator[](int n)
 {
-    if (n >= 0 && n < size_v)
-    {
-        return elem[n];
-    }
-    else
-    {
-        return nullptr;
-    }
+    return elem[n];
 }
 
 template<class T>
@@ -155,7 +158,7 @@ void vector<T>::push_back(T d)
 {
     if (size_v >= space)
     {
-        return nullptr;
+        space = space*2;
     }
     else
     {

@@ -10,18 +10,15 @@
 
 //enum ShapeType {Line, Polyline,Polygon, Rectangle, Ellipse, Text};
 // this causes errors because it's included somewhere within <QtGui>. creating it as an enum class within shape to solve this duplicity
-//static int ShapeCount = 0;
-//static int LineCount = 0;
-//static int PolylineCount = 0;
-//static int PolygonCount = 0;
-//static int RectangleCount = 0;
-//static int EllipseCount = 0;
-//static int TextCount = 0;
+
 
 class Shape : public QPainter
 {
+private:
+
 
     enum class ShapeType {None, Line, Polyline,Polygon, Rectangle, Ellipse, Text};
+
 public:
     Shape();
 
@@ -42,17 +39,20 @@ public:
     int getShapeID();
 
 protected:
-
-
     ShapeType s;
     QPen pen;
     QBrush brush;
     QColor color;
 
-
+    static int ShapeCount;
+    static int LineCount;
+    static int PolylineCount;
+    static int PolygonCount;
+    static int RectangleCount;
+    static int EllipseCount;
+    static int TextCount;
 
     int shapeID;
-
 };
 
 #endif // SHAPE_H
