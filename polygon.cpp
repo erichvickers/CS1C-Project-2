@@ -43,10 +43,31 @@ void Polygon::move(QPoint newPoint)
 
 double Polygon::getPerimeter()
 {
-    return 0;
+    double perimeter = 0;
+    double distX , distY;
+    int j = points.size() - 1;
+    for (int i = 0; i < points.size(); i++)
+    {
+        distX = (points[i].x() - points[j].x());
+        distX = (distX * distX);
+        distY = (points[i].y() - points[j].y());
+        distY = (distY * distY);
+        perimeter += sqrt(distX + distY);
+        j = i;
+    }
+    return perimeter;
 }
 
 double Polygon::getArea()
 {
-    return 0;
+    double tmp = 0;
+    int j = points.size() - 1;
+    for (int i = 0; i < points.size(); i++)
+    {
+        tmp = tmp + (points[i].x() + points[j].x())
+                * (points[i].y() - points[j].y());
+        j = i;
+    }
+    tmp = tmp * .5;
+    return tmp;
 }

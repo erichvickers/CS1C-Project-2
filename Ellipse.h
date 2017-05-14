@@ -12,10 +12,10 @@ private:
 
  public:
       Ellipse(int x1, int y1, int a, int b);
-      virtual draw();
-      void move();
-      virtual void getPerimeter();
-      virtual void getArea();
+      void draw() override;
+      void move(int x1, int y1);
+      double getPerimeter() override;
+      double getArea() override;
 };
 
 

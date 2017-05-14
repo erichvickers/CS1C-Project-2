@@ -17,7 +17,10 @@ SOURCES += main.cpp\
     Line.cpp \
     Polyline.cpp \
     Shape.cpp \
-    polygon.cpp
+    polygon.cpp \
+    rectangle.cpp \
+    ellipse.cpp \
+    text.cpp
 
 HEADERS  += mainwindow.h \
     vector.h \
