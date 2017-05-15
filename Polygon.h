@@ -13,8 +13,8 @@ private:
  public:
       Polygon(QPoint *points_in, int amount_in);
       void draw() override;
-      void move(QPoint);
-      virtual double getPerimeter();
-      virtual double getArea();
+      void move(int x1, int y1) override;
+      double getPerimeter() override;
+      double getArea() override;
 };
 #endif // POLYGON_H

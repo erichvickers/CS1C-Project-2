@@ -12,7 +12,7 @@ private:
 public:
      Polyline(QPoint *points_in, int amount_in);
      void draw() override;
-     void move(QPoint newPoint);
+     void move(int x1, int y1) override;
      double getPerimeter() override;
      double getArea() override;
 };

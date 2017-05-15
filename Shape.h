@@ -32,6 +32,7 @@ public:
     // TODO: Override '>' operator (compare areas)
 
     virtual void draw() = 0;
+    virtual void move(int,int) = 0;
     virtual double getPerimeter() = 0;
     virtual double getArea() = 0;
 

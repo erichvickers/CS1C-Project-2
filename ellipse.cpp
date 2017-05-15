@@ -10,7 +10,7 @@ Ellipse::Ellipse(int x1, int y1, int a_in, int b_in)
     b = b_in;
 }
 
-void Ellipse::draw() override
+void Ellipse::draw()
 {
     drawEllipse(p1,a,b);
 }
@@ -21,13 +21,13 @@ void Ellipse::move(int x1, int y1)
     p1.setY(y1);
 }
 
-double Ellipse::getPerimeter() override
+double Ellipse::getPerimeter()
 {
     return 3.14 * (3 * (a + b) -
                    sqrt((3 * a + b) * (a + 3 * b)));
 }
 
-double Ellipse::getArea() override
+double Ellipse::getArea()
 {
     return 3.14 * a * b;
 }

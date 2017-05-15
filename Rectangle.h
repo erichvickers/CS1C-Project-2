@@ -12,8 +12,8 @@ private:
 public:
      Rectangle(int x1, int y1, int l, int w);
      void draw() override;
-     void move(int, int);
-     void getPerimeter() override;
-     void getArea() override;
+     void move(int x1, int y1) override;
+     double getPerimeter() override;
+     double getArea() override;
 };
 #endif // RECTANGLE_H

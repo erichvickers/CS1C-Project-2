@@ -13,7 +13,7 @@ private:
  public:
       Ellipse(int x1, int y1, int a, int b);
       void draw() override;
-      void move(int x1, int y1);
+      void move(int x1, int y1) override;
       double getPerimeter() override;
       double getArea() override;
 };

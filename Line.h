@@ -10,7 +10,7 @@ private:
  public:
       Line(int x1, int x2, int y1, int y2);
       void draw() override;
-      void move(int,int,int,int);
+      void move(int,int) override;
       double getPerimeter() override;
       double getArea() override;
 };

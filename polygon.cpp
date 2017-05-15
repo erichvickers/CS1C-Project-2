@@ -29,11 +29,11 @@ void Polygon::draw()
     drawPolygon(pptr,amount);
 }
 
-void Polygon::move(QPoint newPoint)
+void Polygon::move(int x1, int y1)
 {
     int dx,dy;
-    dx = newPoint.x() - points[0].x();
-    dy = newPoint.y() - points[0].y();
+    dx = x1 - points[0].x();
+    dy = y1 - points[0].y();
     for (int i = 0; i < amount; i++)
     {
         points[i].setX(points[i].x() + dx);

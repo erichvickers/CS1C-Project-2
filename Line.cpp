@@ -30,12 +30,15 @@ void Line::draw()
 
 }
 
-void Line::move(int x1, int y1, int x2, int y2)
+void Line::move(int x1, int y1)
 {
+    int dx,dy;
+    dx = x1 - p1.x();
+    dy = y1 - p1.y();
     p1.setX(x1);
     p1.setY(y1);
-    p2.setX(x2);
-    p2.setY(y2);
+    p2.setX(dx + p2.x());
+    p2.setY(dy + p2.y());
 }
 
 double Line::getPerimeter()
