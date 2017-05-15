@@ -32,6 +32,7 @@ HEADERS  += mainwindow.h \
     Polygon.h \
     Polyline.h \
     Rectangle.h \
-    Text.h
+    Text.h \
+    shapemanagement.h
 
 FORMS    += mainwindow.ui
