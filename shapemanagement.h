@@ -2,60 +2,25 @@
 #define SHAPEMANAGEMENT_H
 
 #include "vector.h"
-#include "shape.h"
+#include "Line.h"
+#include "Polyline.h"
+#include "Polygon.h"
+#include "Rectangle.h"
+#include "Ellipse.h"
+#include "Text.h"
 
-class ShapeMangement :
+class ShapeManagement
 {
 private:
-    vector<Shape*> shapes;
 
 public:
-    void drawShape(Shape *s)
-    {
-        s->draw();
-    }
+    ShapeManagement() {}
+    ~ShapeManagement() {}
 
-    void moveShape(Shape *s, int x1, int y1)
-    {
-        s->move(x1,y1);
-    }
-
-    double getShapePerimeter(Shape *s)
-    {
-        return s->getPerimeter();
-    }
-
-    double getShapeArea(Shape *s)
-    {
-        return s->getArea();
-    }
-
-    void addShape(Shape *s)
-    {
-        shapes.push_back(s);
-    }
-
-    int totalShapes()
-    {
-        return shapes.size();
-    }
-
-    void drawAllShapes()
-    {
-        if (shapes.begin()!=nullptr)
-        {
-            for (shapes::iterator i = shapes.begin(); i != shapes.end(); i++)
-            {
-                drawShape(*i);
-            }
-        }
-    }
-
-    vector<*Shape> getShapesVector()
-    {
-        return shapes;
-    }
-
+    void drawShape(Shape *s) {s->draw();}
+    void moveShape(Shape *s, int x1, int y1) {s->move(x1,y1);}
+    double getShapePerimeter(Shape *s) {return s->getPerimeter();}
+    double getShapeArea(Shape *s) {return s->getArea();}
 };
 
 

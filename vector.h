@@ -7,11 +7,9 @@
 template<class T>
 class vector
 {
-    int size_v;					// the size
-    T* elem;					// a pointer to the elements
-    int space;					// size+free_space
+
 public:
-    vector() : size_v{0} , elem{new T [space]} , space{0} {}				// default constructor
+    vector() : size_v{0} , space{10} {elem = new T [size_v];}				// default constructor
     explicit vector(int s) : size_v{0} , elem{new T [s]} , space{s} {}			// alternate constructor
     vector(const vector&);					// copy constructor
     vector& operator=(const vector&);		// copy assignment
@@ -34,7 +32,10 @@ public:
     iterator erase(iterator p);		  // remove element pointed to by p
     void sortFunction(vector<T> list);
     bool comparator(T& a, T& b);
-    ~vector() {delete [] elem;}						// destructor
+    ~vector()
+    {
+        delete [] elem;
+    }						// destructor
 
 
 
@@ -45,6 +46,11 @@ public:
 
         }
     };
+
+private:
+    int size_v;					// the size
+    T* elem;					// a pointer to the elements
+    int space;					// size+free_space
 };
 
 /* COPY CONSTRUCTOR
@@ -55,7 +61,7 @@ public:
  */
 template<class T>
 vector<T>::vector(const vector& source)
-:size_v{source.size_v} , space{source.space} , elem{new T[source.space]}
+    :size_v{source.size_v} ,  elem{new T[source.size_v]}, space{source.space}
 {
     for (int i = 0; i < source.size_v; i++)
     {
@@ -76,12 +82,12 @@ vector<T>& vector<T>::operator=(const vector& rhs)
     delete [] elem;
     size_v = rhs.size_v;
     space = rhs.space;
-    elem = new T [space];
+    elem = new T [size_v];
     for (int i = 0; i < rhs.size_v; i++)
     {
         elem[i] = rhs.elem[i];
     }
-    return this;
+    return *this;
 }
 
 /* MOVE CONSTRUCTOR
@@ -90,7 +96,7 @@ vector<T>& vector<T>::operator=(const vector& rhs)
  */
 template<class T>
 vector<T>::vector(const vector&& source)
-    :size_v{source.size_v} , space{source.space} , elem {nullptr}
+    :size_v{source.size_v}  , elem {nullptr} , space{source.space}
 {
     elem = source.elem;
     source.elem = nullptr;
@@ -112,7 +118,7 @@ vector<T>& vector<T>::operator=(const vector&& rhs)
     rhs.elem = nullptr;
     rhs.size_v = 0;
     rhs.space = 0;
-    return this;
+    return *this;
 }
 
 
@@ -135,23 +141,22 @@ T& vector<T>::operator[](int n)
     return elem[n];
 }
 
-template<class T>
-void vector<T>::resize(int newsize)
-{
-    if (newsize >= size_v)
-    {
-        size_v = newsize;
-    }
-    else
-    {
-        T *tmp;
-        for (int i = size_v-1; i > newsize-1; i--)
-        {
-            tmp = elem[i];
-            delete tmp;
-        }
-    }
-}
+//template<class T>
+//void vector<T>::resize(int newsize)
+//{
+//    if (newsize >= size_v)
+//    {
+//        while (newsize >= space)
+//        {
+//            space = space * 2;
+//        }
+//        size_v = newsize;
+//    }
+//    else
+//    {
+
+//    }
+//}
 
 template<class T>
 void vector<T>::push_back(T d)
@@ -160,81 +165,98 @@ void vector<T>::push_back(T d)
     {
         space = space*2;
     }
-    else
-    {
-        elem[size_v] = d;
-        size_v++;
-    }
+    elem[size_v] = d;
+    size_v++;
 }
 
 template<class T>
 void vector<T>::reserve(int newAlloc)
 {
-    if (newAlloc < size_v)
+    if (newAlloc <= size_v)
     {
-        this->resize(newAlloc);
+        return;
     }
+    T* p = new T[newAlloc];
+    for (int i=0; i<size_v; ++i)
+    {
+        p[i] = elem[i];
+    }
+    delete[] elem;
+    elem = p;
     space = newAlloc;
 }
 
 template<class T>
 T* vector<T>::begin()
 {
-    vector<T>::iterator newIt = elem[0];
-    return newIt;
+    return &elem[0];
 }
 
 template<class T>
 T* vector<T>::begin() const
 {
-    vector<T>::const_iterator newIt = elem[0];
-    return newIt;
+    return &elem[0];
 }
 
 template<class T>
 T* vector<T>::end()
 {
-    vector<T>::iterator newIt = elem[size_v];
-    return newIt;
+    return &elem[size_v];
 }
 
 template<class T>
 T* vector<T>::end() const
 {
-    vector<T>::const_iterator newIt = elem[size_v];
-    return newIt;
+    return &elem[size_v];
 }
 
 template<class T>
 T* vector<T>::insert(iterator p, const T& v)
 {
-    resize(this->size()+1);
-    vector<T>::iterator tmp = p;
-    vector<T>::iterator tmp1 = p;
-
-    T a = *p;
-
-    for (vector<T>::iterator i = p; i!=end();i++)
+    int index = p - begin();
+    if (size() == capacity())
+        reserve(size() * 2);
+    ++size_v;
+    iterator pp = begin() + index;
+    for (iterator i = end() - 1; i != pp; --i)
     {
-
+        *i = *(i-1);
     }
+    *(begin() + index) = v;
+    return pp;
 }
 
-template <class T>
-void vector<T>::sortFunction(vector<T> list)
+template<class T>
+T* vector<T>::erase(iterator p)
 {
-     sort(list.begin(), list.end(), comparator());
-
-//     for (vector<int>::iterator it=list.begin(); it!=list.end(); ++it){
-
-//     }
-//     std::cout << ' ' << *it;
+    if (p == end())
+    {
+        return p;
+    }
+    for (iterator i = p + 1; i != end(); ++i)
+    {
+        *(i-1) = *i;
+    }
+    delete (end()-1);
+    --size_v;
+    return p;
 }
 
-template <class T>
-bool vector<T>::comparator(T & a, T & b)
-{
-    return a > b;
-}
+//template <class T>
+//void vector<T>::sortFunction(vector<T> list)
+//{
+//    sort(list.begin(), list.end(), comparator());
+
+//    //     for (vector<int>::iterator it=list.begin(); it!=list.end(); ++it){
+
+////     }
+////     std::cout << ' ' << *it;
+//}
+
+//template <class T>
+//bool vector<T>::comparator(T & a, T & b)
+//{
+//    return a > b;
+//}
 
 #endif // VECTOR_H

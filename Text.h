@@ -6,26 +6,27 @@ class Text : public Shape
 {
 
 private:
-    QPoint p1;
+    int x;
+    int y;
     int l;
     int w;
 
     Qt::AlignmentFlag align;
-
+    QString output;
     QFont text;
 
 public:
-    Text(int x1, int y1, int l, int w);
+    Text(int x1, int y1, int l, int w, QPaintDevice *device);
     void draw() override;
     void move(int x1, int y1) override;
     double getPerimeter() override;
     double getArea() override;
 
     void setTextString(QString);
-    void setTextColor(QColor&);
+    void setTextColor(Qt::GlobalColor);
     void setTextAllignment(Qt::AlignmentFlag);
     void setTextPointSize(int);
-    void setTextFontFamily(QFont::StyleHint);
+    void setTextFontFamily(QString);
     void setTextFontStyle(QFont::Style);
     void setTextFontWeight(QFont::Weight);
 

@@ -1,25 +1,23 @@
 #include "Text.h"
 
-Text::Text(int x1, int y1, int l_in, int w_in)
+Text::Text(int x1, int y1, int l_in, int w_in, QPaintDevice *device)
+    : Shape(device) , x(x1) , y(y1) , l(l_in) , w(w_in) , align(Qt::AlignCenter) ,
+      output("hello world") , text("Times")
 {
     shapeID = TextCount++;
-    shapeID = shapeID + 7000;
-    p1.setX(x1);
-    p1.setY(y1);
-    l = l_in;
-    w = w_in;
+    shapeID = shapeID + 8000;
 }
 
 void Text::draw()
 {
-    QRect drawRect(p1.x(),p1.y(),l,w);
-    drawText(drawRect,align,text.rawName());
+    QRect drawRect(x,y,l,w);
+    drawText(drawRect,align,output);
 }
 
 void Text::move(int x1, int y1)
 {
-    p1.setX(x1);
-    p1.setY(y1);
+    x = x1;
+    y = y1;
 }
 
 double Text::getPerimeter()
@@ -34,10 +32,10 @@ double Text::getArea()
 
 void Text::setTextString(QString input)
 {
-    text.setRawName(input);
+    output = input;
 }
 
-void Text::setTextColor(QColor &color)
+void Text::setTextColor(Qt::GlobalColor color)
 {
     pen.setColor(color);
 }
@@ -52,9 +50,9 @@ void Text::setTextPointSize(int size)
     text.setPointSize(size);
 }
 
-void Text::setTextFontFamily(QFont::StyleHint fam)
+void Text::setTextFontFamily(QString fam)
 {
-    text.setStyleHint(fam);
+    text.setFamily(fam);
 }
 
 void Text::setTextFontStyle(QFont::Style style)

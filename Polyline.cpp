@@ -12,11 +12,11 @@
 //     double getArea() override;
 //};
 
-Polyline::Polyline(QPoint *points_in, int amount_in)
+Polyline::Polyline(QPoint* points_in, int amount_in, QPaintDevice *device)
+    : Shape(device) , points(amount_in * 2) , amount(amount_in)
 {
     shapeID = PolylineCount++;
     shapeID = shapeID + 2000;
-    amount = amount_in;
     for (int i = 0; i < amount; i++)
     {
         points.push_back(points_in[i]);

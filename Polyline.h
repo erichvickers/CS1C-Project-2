@@ -10,10 +10,10 @@ private:
     int amount;
 
 public:
-     Polyline(QPoint *points_in, int amount_in);
-     void draw() override;
-     void move(int x1, int y1) override;
-     double getPerimeter() override;
-     double getArea() override;
+    Polyline(QPoint* points_in, int amount_in, QPaintDevice *device);
+    void draw() override;
+    void move(int x1, int y1) override;
+    double getPerimeter() override;
+    double getArea() override;
 };
 #endif // POLYLINE_H

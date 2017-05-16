@@ -1,7 +1,6 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
-#include <vector>
 #include <QBrush>
 #include <QPen>
 #include <QWidget>
@@ -20,13 +19,22 @@ private:
     enum class ShapeType {None, Line, Polyline,Polygon, Rectangle, Ellipse, Text};
 
 public:
-    Shape();
+    Shape(QPaintDevice *device);
+    virtual ~Shape() {}
 
-    void setPenColor(QColor &color);
+    QPen getPen() {return pen;}
+    QBrush getBrush() {return brush;}
+    QFont getFont() {return font;}
+
+    void setNewPen(QPen);
+    void setNewBrush(QBrush);
+    void setNewFont(QFont);
+    void setPenColor(Qt::GlobalColor);
     void setPenWidth(int width);
     void setPenStyle(Qt::PenStyle);
+    void setPenCapStyle(Qt::PenCapStyle);
     void setPenJointStyle(Qt::PenJoinStyle);
-    void setBrushColor(QColor &color);
+    void setBrushColor(Qt::GlobalColor);
     void setBrushStyle(Qt::BrushStyle);
 
     // TODO: Override '>' operator (compare areas)
@@ -44,13 +52,16 @@ protected:
     QPen pen;
     QBrush brush;
     QColor color;
+    QFont font;
 
     static int ShapeCount;
     static int LineCount;
     static int PolylineCount;
     static int PolygonCount;
     static int RectangleCount;
+    static int SquareCount;
     static int EllipseCount;
+    static int CircleCount;
     static int TextCount;
 
     int shapeID;

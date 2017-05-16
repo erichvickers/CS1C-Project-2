@@ -14,7 +14,7 @@ private:
       virtual void getArea();
 };
 */
-Line::Line(int x1, int y1, int x2, int y2)
+Line::Line(int x1, int y1, int x2, int y2, QPaintDevice *device) : Shape(device)
 {
     shapeID = LineCount++;
     shapeID = shapeID + 1000;

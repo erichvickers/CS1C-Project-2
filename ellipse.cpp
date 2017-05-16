@@ -1,24 +1,29 @@
 #include "Ellipse.h"
 
-Ellipse::Ellipse(int x1, int y1, int a_in, int b_in)
+Ellipse::Ellipse(int x1, int y1, int a_in, int b_in, QPaintDevice *device)
+    : Shape(device) , x(x1) , y(y1) , a(a_in) , b(b_in)
 {
-    shapeID = EllipseCount++;
-    shapeID = shapeID + 6000;
-    p1.setX(x1);
-    p1.setY(y1);
-    a = a_in;
-    b = b_in;
+    if (a == b)
+    {
+        shapeID = CircleCount++;
+        shapeID = shapeID + 7000;
+    }
+    else
+    {
+        shapeID = EllipseCount++;
+        shapeID = shapeID + 6000;
+    }
 }
 
 void Ellipse::draw()
 {
-    drawEllipse(p1,a,b);
+    drawEllipse(x,y,a,b);
 }
 
 void Ellipse::move(int x1, int y1)
 {
-    p1.setX(x1);
-    p1.setY(y1);
+    x = x1;
+    y = y1;
 }
 
 double Ellipse::getPerimeter()

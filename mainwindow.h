@@ -4,14 +4,10 @@
 #include <QMainWindow>
 #include <fstream>
 #include <algorithm>
-#include <QBrush>
-#include <QPen>
-#include <QWidget>
-#include <QPainter>
 #include <QFile>
 #include <QTextStream>
-#include "Shape.h"
-#include "vector.h"
+#include "shapemanagement.h"
+#include <iostream>
 
 namespace Ui {
 class MainWindow;
@@ -25,7 +21,18 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    void Read();
+    void Read(QPaintDevice*);
+    void shapeSetup();
+
+    Qt::GlobalColor penColor(QString color);
+    Qt::PenStyle penStyle(QString style);
+    Qt::PenCapStyle penCapStyle(QString style);
+    Qt::PenJoinStyle penJoinStyle(QString style);
+    Qt::BrushStyle brushStyle(QString style);
+    Qt::AlignmentFlag alignmentFlag(QString style);
+    QFont::StyleHint textFont(QString style);
+    QFont::Style textFontStyle(QString style);
+    QFont::Weight textWeight(QString style);
 
 protected:
     void paintEvent(QPaintEvent *event);
@@ -34,6 +41,8 @@ protected:
 
 private:
     Ui::MainWindow *ui;
+    ShapeManagement manager;
+    vector<Shape*> shapes;
 };
 
 #endif // MAINWINDOW_H

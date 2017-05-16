@@ -1,5 +1,6 @@
 #include "Polygon.h"
 
+
 //class Polyline : public Shape
 //{
 //    vector<QPoint> points;
@@ -12,11 +13,11 @@
 //     double getArea() override;
 //};
 
-Polygon::Polygon(QPoint *points_in, int amount_in)
+Polygon::Polygon(QPoint *points_in, int amount_in, QPaintDevice *device)
+    : Shape(device) , points(amount_in * 2) , amount(amount_in)
 {
     shapeID = PolygonCount++;
     shapeID = shapeID + 3000;
-    amount = amount_in;
     for (int i = 0; i < amount; i++)
     {
         points.push_back(points_in[i]);
@@ -26,7 +27,12 @@ Polygon::Polygon(QPoint *points_in, int amount_in)
 void Polygon::draw()
 {
     QPoint *pptr = &points[0];
-    drawPolygon(pptr,amount);
+    this->drawPolygon(pptr,amount);
+    QVector<QPoint> qPoints;
+    for (int i = 0; i < points.size(); i++)
+    {
+        qPoints.push_back(points[i]);
+    }
 }
 
 void Polygon::move(int x1, int y1)
