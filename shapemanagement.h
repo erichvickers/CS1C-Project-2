@@ -21,6 +21,7 @@ public:
     void moveShape(Shape *s, int x1, int y1) {s->move(x1,y1);}
     double getShapePerimeter(Shape *s) {return s->getPerimeter();}
     double getShapeArea(Shape *s) {return s->getArea();}
+
 };
 
 

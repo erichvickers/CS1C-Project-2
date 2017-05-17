@@ -23,6 +23,22 @@ public:
 
     void Read(QPaintDevice*);
     void shapeSetup();
+    void moveIt(int like,int to)
+    {
+        for (int i = 0; i < shapes.size(); i++)
+        {
+            manager.moveShape(shapes[i],like,to);
+        }
+        this->update();
+    }
+
+    void printIt()
+    {
+        for (int i = 0; i < shapes.size(); i++)
+        {
+            manager.drawShape(shapes[i]);
+        }
+    }
 
     Qt::GlobalColor penColor(QString color);
     Qt::PenStyle penStyle(QString style);

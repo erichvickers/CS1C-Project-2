@@ -28,7 +28,7 @@ void MainWindow::shapeSetup()
 
 void MainWindow::Read(QPaintDevice *device)
 {
-    QFile file("C:\\Users\\Erich\\Desktop\\shapes.txt");
+    QFile file("://shapes.txt");
     if (!file.open(QFile::ReadOnly | QFile::Text))
     {
         return;
@@ -61,6 +61,8 @@ void MainWindow::Read(QPaintDevice *device)
             newPen.setJoinStyle(penJoinStyle(list[1]));
             newLine->setNewPen(newPen);
             shapes.push_back(newLine);
+            manager.drawShape(newLine);
+            manager.moveShape(newLine,0,100);
             manager.drawShape(newLine);
             QFont newFont;
             QPen newPen1;
@@ -97,6 +99,8 @@ void MainWindow::Read(QPaintDevice *device)
             newPen.setJoinStyle(penJoinStyle(list[1]));
             newPolyline->setNewPen(newPen);
             shapes.push_back(newPolyline);
+            manager.drawShape(newPolyline);
+            manager.moveShape(newPolyline,100,100);
             manager.drawShape(newPolyline);
             QFont newFont;
             QPen newPen1;
@@ -139,6 +143,8 @@ void MainWindow::Read(QPaintDevice *device)
             newPolygon->setNewBrush(newBrush);
             shapes.push_back(newPolygon);
             manager.drawShape(newPolygon);
+            manager.moveShape(newPolygon,200,100);
+            manager.drawShape(newPolygon);
             QFont newFont;
             QPen newPen1;
             newPolygon->setPen(newPen1);
@@ -171,6 +177,8 @@ void MainWindow::Read(QPaintDevice *device)
             newRectangle->setNewPen(newPen);
             newRectangle->setNewBrush(newBrush);
             shapes.push_back(newRectangle);
+            manager.drawShape(newRectangle);
+            manager.moveShape(newRectangle,400,600);
             manager.drawShape(newRectangle);
             QFont newFont;
             QPen newPen1;
@@ -205,6 +213,8 @@ void MainWindow::Read(QPaintDevice *device)
             newSquare->setNewBrush(newBrush);
             shapes.push_back(newSquare);
             manager.drawShape(newSquare);
+            manager.moveShape(newSquare,400,600);
+            manager.drawShape(newSquare);
             QFont newFont;
             QPen newPen1;
             newSquare->setPen(newPen1);
@@ -237,6 +247,8 @@ void MainWindow::Read(QPaintDevice *device)
             newEllipse->setNewPen(newPen);
             newEllipse->setNewBrush(newBrush);
             shapes.push_back(newEllipse);
+            manager.drawShape(newEllipse);
+            manager.moveShape(newEllipse,400,600);
             manager.drawShape(newEllipse);
             QFont newFont;
             QPen newPen1;
@@ -318,59 +330,21 @@ void MainWindow::Read(QPaintDevice *device)
 
 void MainWindow::paintEvent(QPaintEvent *event)
 {
+    Ellipse *newEllipse = new Ellipse(500,500,100,101,this);
+    QPen newPen;
+    newPen.setColor(Qt::cyan);
+    newPen.setWidth(5);
+    newPen.setStyle(Qt::DashLine);
+    newPen.setCapStyle(Qt::SquareCap);
+    newPen.setJoinStyle(Qt::MiterJoin);
+    QBrush newBrush;
+    newBrush.setColor(Qt::red);
+    newBrush.setStyle(Qt::SolidPattern);
+    newEllipse->setNewPen(newPen);
+    newEllipse->setNewBrush(newBrush);
+    manager.drawShape(newEllipse);
+
     Read(this);
-
-    //    Rectangle *newline = new Rectangle(10, 120, 60, 20, this);
-    //    newline->setPenColor(Qt::black);
-    //    newline->setPenWidth(20);
-    //    newline->setPenStyle(Qt::DashDotLine);
-    //    newline->setPenCapStyle(Qt::FlatCap);
-    //    newline->setPenJointStyle(Qt::MiterJoin);
-    //    newline->setBrushColor(Qt::black);
-    //    newline->setBrushStyle(Qt::VerPattern);
-    //    shapes.drawShape(newline);
-    //    shapes.loadShapes();
-    //    shapes.drawAllShapes();
-    //    update();
-
-
-    //            QPainter p(this);
-
-    //            QPen pointPen(Qt::black);
-    //            pointPen.setWidth(5);
-
-    //            QPen linePen(Qt::green);
-    //            linePen.setWidth(2);
-
-    //            QPoint p1;
-    //            p1.setX(10);
-    //            p1.setY(15);
-
-    //            QPoint p2;
-    //            p2.setX(100);
-    //            p2.setY(100);
-
-    //            p.setPen(linePen);
-    //            p.drawLine(p1, p2);
-
-    //            p.setPen(pointPen);
-    //            p.drawRect(10, 120, 60, 20);
-    //            p.fillRect(10, 120, 60, 20, Qt::yellow);
-
-    //            p.drawPoint(p1);
-    //            p.drawPoint(p2);
-
-    //            linePen.setColor(Qt::blue);
-    //            p.setPen(linePen);
-    //            p1.setX(180);
-    //            p1.setY(70);
-    //            p.drawEllipse(p1, 20, 30);
-
-    //            linePen.setStyle(Qt::DotLine);
-    //            p.drawRect(230,230,100,30);
-    //            p.drawText(250,250, "Text Box Example");
-
-
 }
 
 

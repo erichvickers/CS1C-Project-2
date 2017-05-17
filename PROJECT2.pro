@@ -24,8 +24,6 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h \
     vector.h \
-    square.h \
-    circle.h \
     Ellipse.h \
     Shape.h \
     Line.h \
@@ -36,3 +34,6 @@ HEADERS  += mainwindow.h \
     shapemanagement.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    resource.qrc
