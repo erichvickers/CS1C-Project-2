@@ -574,3 +574,10 @@ QFont::Weight MainWindow::textWeight(QString style)
     return QFont::Normal;
 }
 
+
+void MainWindow::on_pushButton_clicked()
+{
+   HelpDialog h;
+   h.setModal(true);
+   h.exec();
+}

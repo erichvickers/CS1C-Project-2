@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     polygon.cpp \
     rectangle.cpp \
     ellipse.cpp \
-    text.cpp
+    text.cpp \
+    helpdialog.cpp
 
 HEADERS  += mainwindow.h \
     vector.h \
@@ -31,9 +32,11 @@ HEADERS  += mainwindow.h \
     Polyline.h \
     Rectangle.h \
     Text.h \
-    shapemanagement.h
+    shapemanagement.h \
+    helpdialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    helpdialog.ui
 
 RESOURCES += \
     resource.qrc

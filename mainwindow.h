@@ -8,6 +8,7 @@
 #include <QTextStream>
 #include "shapemanagement.h"
 #include <iostream>
+#include "helpdialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -54,6 +55,9 @@ protected:
     void paintEvent(QPaintEvent *event);
 
 
+
+private slots:
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
